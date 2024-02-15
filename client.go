@@ -440,6 +440,7 @@ func (mb *client) send(request *ProtocolDataUnit) (response *ProtocolDataUnit, e
 	if err != nil {
 		return
 	}
+	fmt.Printf("mb.send:[%v]\n",aduRequest)
 	aduResponse, err := mb.transporter.Send(aduRequest)
 	if err != nil {
 		return
