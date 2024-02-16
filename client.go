@@ -470,12 +470,13 @@ func (mb *client) ReadFIFOQueue(address uint16) (results []byte, err error) {
 // send sends request and checks possible exception in the response.
 func (mb *client) send(request *ProtocolDataUnit) (response *ProtocolDataUnit, err error) {
 	aduRequest, err := mb.packager.Encode(request)
-	fmt.Printf("mb.send:[%#X ]\n", aduRequest)
+	fmt.Printf("mb.send:[%#X]\n", aduRequest)
 	if err != nil {
 		return
 	}
 
 	aduResponse, err := mb.transporter.Send(aduRequest)
+	fmt.Printf("mb.recv:[%#X]\n", aduResponse)
 	if err != nil {
 		return
 	}
